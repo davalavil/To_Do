@@ -549,13 +549,18 @@ function loadTasksFromFile(file) {
 
 
 // --- Service Worker Registration ---
+// Verifica si la ruta base necesita ser ajustada para GitHub Pages
+// El scope del service worker por defecto será el directorio donde se encuentra.
+// Si todos los archivos están en la raíz del repo 'To_Do', '/service-worker.js' podría
+// interpretarse relativo al dominio davalavil.github.io, NO a davalavil.github.io/To_Do/
+// Por eso, es más seguro usar una ruta relativa si el SW está en la misma carpeta que el HTML que lo registra.
+const serviceWorkerPath = 'service-worker.js'; // Ruta relativa
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    // Usamos window.onload para registrar el SW después de que la página
-    // y todos sus recursos principales se hayan cargado, para no ralentizar la carga inicial.
-    navigator.serviceWorker.register('/service-worker.js') // Asegúrate de que la ruta sea correcta
+    navigator.serviceWorker.register(serviceWorkerPath)
       .then(registration => {
-        console.log('Service Worker registrado con éxito. Scope:', registration.scope);
+        console.log(`Service Worker registrado con éxito. Scope: ${registration.scope}`);
       })
       .catch(error => {
         console.log('Fallo en el registro del Service Worker:', error);
