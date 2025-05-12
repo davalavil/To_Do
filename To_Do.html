@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación To-Do Avanzada</title>
+
+    <!-- Enlace al Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Meta etiquetas para PWA y experiencia en iOS -->
+    <meta name="theme-color" content="#3498db"> <!-- Coincide con theme_color del manifest -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tareas"> <!-- Nombre para iOS Home Screen -->
+    <!-- Podrías añadir iconos específicos para apple-touch-icon si los tienes -->
+    <!-- <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png"> -->
+
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tareas</h1>
+            <div class="actions">
+                <button id="theme-toggle" class="theme-toggle">🌙</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="panel">
+                <h2>Nueva Tarea</h2>
+                <form id="task-form" class="task-form">
+                    <div class="form-group">
+                        <label for="title">Título*</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Categoría</label>
+                        <select id="category" name="category">
+                            <option value="personal">Personal</option>
+                            <option value="trabajo">Trabajo</option>
+                            <option value="estudio">Estudio</option>
+                            <option value="hogar">Hogar</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Prioridad</label>
+                        <select id="priority" name="priority">
+                            <option value="low">Baja</option>
+                            <option value="medium" selected>Media</option>
+                            <option value="high">Alta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="due-date">Fecha límite</label>
+                        <input type="datetime-local" id="due-date" name="due-date">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="description">Descripción</label>
+                        <textarea id="description" name="description"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn-primary">Agregar Tarea</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="panel">
+                <div class="task-filters">
+                    <button class="filter-btn active" data-filter="all">Todas</button>
+                    <button class="filter-btn" data-filter="pending">Pendientes</button>
+                    <button class="filter-btn" data-filter="completed">Completadas</button>
+                    <select id="category-filter">
+                        <option value="all">Todas las categorías</option>
+                        <option value="personal">Personal</option>
+                        <option value="trabajo">Trabajo</option>
+                        <option value="estudio">Estudio</option>
+                        <option value="hogar">Hogar</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <select id="priority-filter">
+                        <option value="all">Todas las prioridades</option>
+                        <option value="high">Alta</option>
+                        <option value="medium">Media</option>
+                        <option value="low">Baja</option>
+                    </select>
+                </div>
+                
+                <div id="tasks-container">
+                    <ul class="task-list" id="task-list">
+                        <!-- Las tareas se cargarán aquí dinámicamente -->
+                    </ul>
+                </div>
+
+                <div class="file-actions">
+                    <button id="save-btn" class="btn-primary">Guardar Tareas</button>
+                    <button id="load-btn" class="btn-primary">Cargar Tareas</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="side-content">
+            <div class="panel">
+                <h2>Progreso</h2>
+                <div class="tabs">
+                    <button class="tab active" data-tab="weekly">Semanal</button>
+                    <button class="tab" data-tab="monthly">Mensual</button>
+                </div>
+                
+                <div id="weekly-chart" class="tab-content chart-container active">
+                    <canvas id="weekly-progress"></canvas>
+                </div>
+                
+                <div id="monthly-chart" class="tab-content chart-container">
+                    <canvas id="monthly-progress"></canvas>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Estadísticas</h2>
+                <div id="stats-container">
+                    <p>Total de tareas: <span id="total-tasks">0</span></p>
+                    <p>Completadas: <span id="completed-tasks">0</span></p>
+                    <p>Pendientes: <span id="pending-tasks">0</span></p>
+                    <p>Alta prioridad: <span id="high-priority-tasks">0</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

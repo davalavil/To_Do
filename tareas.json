@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1747029927308",
+    "title": "Oculista David",
+    "description": "Oculista David - General Óptica",
+    "category": "personal",
+    "priority": "high",
+    "dueDate": "2025-05-16T19:00",
+    "completed": false,
+    "createdAt": "2025-05-12T06:05:27.308Z"
+  },
+  {
+    "id": "1747029884051",
+    "title": "Oculista Naiara",
+    "description": "Oculista Naiara - General Óptica",
+    "category": "personal",
+    "priority": "high",
+    "dueDate": "2025-05-16T18:30",
+    "completed": false,
+    "createdAt": "2025-05-12T06:04:44.051Z"
+  },
+  {
+    "id": "1747029554816",
+    "title": "Comprar Parking",
+    "description": "Comprar Parking en las Franquesas",
+    "category": "personal",
+    "priority": "high",
+    "dueDate": "2025-05-16T11:00",
+    "completed": false,
+    "createdAt": "2025-05-12T05:59:14.816Z"
+  }
+]
