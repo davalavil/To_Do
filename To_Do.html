@@ -5,17 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicación To-Do Avanzada</title>
 
-    <!-- Enlace al Web App Manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json"> <!-- ENLACE AL MANIFEST -->
 
-    <!-- Meta etiquetas para PWA y experiencia en iOS -->
-    <meta name="theme-color" content="#3498db"> <!-- Coincide con theme_color del manifest -->
+    <!-- Opcional para iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Tareas"> <!-- Nombre para iOS Home Screen -->
-    <!-- Podrías añadir iconos específicos para apple-touch-icon si los tienes -->
-    <!-- <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png"> -->
-
+    <meta name="apple-mobile-web-app-title" content="Tareas">
 
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
@@ -89,7 +84,7 @@
                         <option value="low">Baja</option>
                     </select>
                 </div>
-                
+
                 <div id="tasks-container">
                     <ul class="task-list" id="task-list">
                         <!-- Las tareas se cargarán aquí dinámicamente -->
@@ -110,11 +105,11 @@
                     <button class="tab active" data-tab="weekly">Semanal</button>
                     <button class="tab" data-tab="monthly">Mensual</button>
                 </div>
-                
+
                 <div id="weekly-chart" class="tab-content chart-container active">
                     <canvas id="weekly-progress"></canvas>
                 </div>
-                
+
                 <div id="monthly-chart" class="tab-content chart-container">
                     <canvas id="monthly-progress"></canvas>
                 </div>
